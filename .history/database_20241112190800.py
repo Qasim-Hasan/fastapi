@@ -1,4 +1,8 @@
 
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
 import os
 from sqlalchemy import create_engine
@@ -19,8 +23,7 @@ if is_running_in_docker():
     URL_DATABASE = f"mysql+pymysql://admin:Doraemon2015@{RDS_ENDPOINT}:3306/weather"
 else:
     # For local development
-    RDS_ENDPOINT = "weather.c5wcmiioc2y5.ap-south-1.rds.amazonaws.com"
-    URL_DATABASE = f"mysql+pymysql://admin:Doraemon2015@{RDS_ENDPOINT}:3306/weather"
+    URL_DATABASE = "mysql+pymysql://root:admin@localhost:3306/weather"
 
 # Initialize SQLAlchemy engine and session
 engine = create_engine(URL_DATABASE)
